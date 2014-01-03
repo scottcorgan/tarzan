@@ -1,0 +1,35 @@
+{
+  "name": "tarzan",
+  "version": "0.1.0",
+  "description": "Package tarballs with options",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js | node_modules/.bin/tspec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottcorgan/tarzan.git"
+  },
+  "keywords": [
+    "tar",
+    "pack",
+    "ignore",
+    "stream"
+  ],
+  "author": "Scott Corgan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scottcorgan/tarzan/issues"
+  },
+  "devDependencies": {
+    "tape": "~2.3.2",
+    "tap-spec": "0.0.1",
+    "tar": "~0.1.19",
+    "through": "~2.3.4"
+  },
+  "dependencies": {
+    "tar": "~0.1.19",
+    "zlib": "~1.0.5",
+    "fstream-ignore": "0.0.7"
+  }
+}
