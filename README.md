@@ -15,12 +15,12 @@ var fs = require('fs');
 var tarzan = require('tarzan');
 var write = fs.createWriteStream('path/to/package.tar');
 
-var package = tarzan({
+var pack = tarzan({
   directory: 'path/to/somewhere',
   ignore: ['**/node_modules']
 });
 
-package.pipe(write);
+pack.pipe(write);
 ```
 
 ## Options
