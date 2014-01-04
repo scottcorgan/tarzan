@@ -13,9 +13,10 @@ var tarzan = function (options) {
   // are packed into the stream.
   var reader = Ignore({
     path: options.directory,
-    type: 'Directory',
-    ignoreFiles: ignore
+    type: 'Directory'
   });
+  
+  reader.addIgnoreRules(ignore);
   
   return reader
     .pipe(tar.Pack({
