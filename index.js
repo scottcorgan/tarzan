@@ -2,6 +2,7 @@ var fs = require('fs');
 var tar = require('tar');
 var zlib = require('zlib');
 var Ignore = require('fstream-ignore');
+var path = require('path');
 
 var tarzan = function (options) {
   var ignore = options.ignore || [];
@@ -20,8 +21,8 @@ var tarzan = function (options) {
   
   return reader
     .pipe(tar.Pack({
-      pathFilter: function(path) {
-        return path.replace(options.directory + '/', '');     
+      pathFilter: function(pathname) {
+        return pathname.replace(path.join(options.directory, '/'), '');     
       }
     }))
     .pipe(zlib.Gzip());
