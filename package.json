@@ -1,6 +1,6 @@
 {
   "name": "tarzan",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Package tarballs with options",
   "main": "index.js",
   "scripts": {
