@@ -3,8 +3,9 @@ var tar = require('tar');
 var zlib = require('zlib');
 var Ignore = require('fstream-ignore');
 var path = require('path');
+var through = require('through');
 
-var tarzan = function (options) {
+module.exports = function (options) {
   var ignore = options.ignore || [];
   
   if (!options.directory) throw new Error('Directory required');
@@ -19,13 +20,25 @@ var tarzan = function (options) {
   
   reader.addIgnoreRules(ignore);
   
-  return reader
+  var packed = through();
+  
+  reader
     .pipe(tar.Pack({
       pathFilter: function(pathname) {
-        return pathname.replace(path.join(options.directory, '/'), '');     
+        var p = pathname.replace(path.join(options.directory, '/'), '');     
+        
+        if (!fs.lstatSync(pathname).isDirectory()) {
+          packed.emit('file', {
+            full: pathname,
+            relative: p
+          });
+        }
+        
+        return p;
       }
     }))
-    .pipe(zlib.Gzip());
+    .pipe(zlib.Gzip())
+    .pipe(packed);
+    
+  return packed;
 };
-
-module.exports = tarzan;

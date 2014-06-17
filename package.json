@@ -1,6 +1,6 @@
 {
   "name": "tarzan",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Package tarballs with options",
   "main": "index.js",
   "scripts": {
@@ -28,8 +28,9 @@
     "through": "~2.3.4"
   },
   "dependencies": {
-    "tar": "https://github.com/divshot/node-tar/tarball/master",
+    "tar": "https://github.com/divshot/node-tar/tarball/master#c82fb21a139052977cad87f39abf7b7b84b43824",
     "zlib": "~1.0.5",
-    "fstream-ignore": "0.0.7"
+    "fstream-ignore": "0.0.7",
+    "through": "^2.3.4"
   }
 }
